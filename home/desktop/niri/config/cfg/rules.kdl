@@ -1,0 +1,80 @@
+window-rule {
+    geometry-corner-radius 13
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+window-rule {
+    match app-id="(?i)discord"
+    open-maximized true
+    open-on-workspace "social"
+}
+
+window-rule {
+    match app-id="(?i)librewolf"
+    open-maximized true
+    open-on-workspace "browse"
+}
+
+window-rule {
+    match app-id="(?i)ranger"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)steam"
+    open-maximized true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="(?i)net.lutris.Lutris"
+    open-maximized true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="(?i)org.remmina.Remmina"
+    open-maximized true
+    open-on-output "DP-1"
+    open-on-workspace "remote"
+}
+
+window-rule {
+    match app-id="(?i)moonlight"
+    open-maximized true
+    open-on-output "DP-1"
+    open-on-workspace "remote"
+}
+
+window-rule {
+    match app-id="(?i)Alacritty"
+    open-on-output "DP-1"
+    open-on-workspace "prompt"
+}
+
+window-rule {
+    match app-id="(?i)com.obsproject.Studio"
+    open-maximized true
+    open-on-workspace "stream"
+}
+
+window-rule {
+    match app-id="(?i)org.gnome.Nautilus"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)virt-manager"
+    open-on-workspace "virtual"
+}
+
+window-rule {
+    match app-id="(?i)Podman Desktop"
+    open-on-workspace "virtual"
+    open-maximized true
+}
