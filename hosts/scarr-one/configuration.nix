@@ -48,6 +48,7 @@
   users.users.neonscar = {
     isNormalUser = true;
     description = "neonscar";
+  virtualisation.libvirtd.enable = true;
     extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
     shell = pkgs.fish;
   };

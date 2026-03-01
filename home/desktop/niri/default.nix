@@ -14,7 +14,7 @@
     xwayland
     wl-clipboard
     swww
-    noctalia-shell # These may need custom packaging if not in nixpkgs
-    noctalia-qs
+    # noctalia-shell # These may need custom packaging if not in nixpkgs
+    # noctalia-qs
   ];
 }
