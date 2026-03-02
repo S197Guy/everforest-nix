@@ -15,7 +15,7 @@
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    nixosConfigurations.scarr-one = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."scarr-one" = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs; };
       modules = [
