@@ -87,6 +87,8 @@
   programs.neovim.defaultEditor = true;
 
   # 9. Experimental Features
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "America/Denver";
