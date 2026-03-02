@@ -25,7 +25,6 @@
     wget
     curl
     nodejs
-    npm
     # Language Servers
     gopls
     rust-analyzer
