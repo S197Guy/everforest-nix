@@ -39,7 +39,7 @@
     # Connectivity
     networkmanagerapplet
     blueman
-    
+  ];
 
   programs.home-manager.enable = true;
 }
