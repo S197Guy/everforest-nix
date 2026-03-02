@@ -9,7 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Use the community flake that provides the NixOS module
     niri.url = "github:sodiboo/niri-flake";
   };
 
@@ -31,7 +30,7 @@
           home-manager.users.neonscar = {
             imports = [
               ./home/home.nix
-              inputs.niri.homeModules.niri
+              # removed redundant niri.homeModules.niri import
             ];
           };
         }
