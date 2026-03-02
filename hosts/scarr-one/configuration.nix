@@ -76,7 +76,6 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
   ];
-  ];
 
   # Set Neovim as the default editor
   programs.neovim.enable = true;
