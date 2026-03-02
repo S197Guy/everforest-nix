@@ -15,7 +15,7 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      rocm-opencl-runtime
+      rocmPackages.clr.icd
     ];
   };
 
