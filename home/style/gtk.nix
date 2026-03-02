@@ -5,16 +5,16 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Everforest-Dark-BL";
-      package = pkgs.everforest-gtk-theme;
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
-      name = "Everforest-Dark";
-      package = pkgs.everforest-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Capitaine Cursors";
-      package = pkgs.capitaine-cursors;
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
       size = 24;
     };
     font = {
@@ -24,8 +24,8 @@
   };
 
   home.pointerCursor = {
-    name = "Capitaine Cursors";
-    package = pkgs.capitaine-cursors;
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
     size = 24;
     gtk.enable = true;
     x11.enable = true;
