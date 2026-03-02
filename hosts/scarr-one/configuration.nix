@@ -71,8 +71,11 @@
   programs.fish.enable = true;
 
   # Fonts (System Profile)
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
+  fonts.packages = with pkgs; [ 
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+  ];
   ];
 
   # Set Neovim as the default editor

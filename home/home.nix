@@ -40,11 +40,6 @@
     networkmanagerapplet
     blueman
     
-    # Fonts (User Profile)
-    jetbrains-mono
-    fira-code
-    font-awesome
-  ];
 
   programs.home-manager.enable = true;
 }
