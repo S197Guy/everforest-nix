@@ -24,7 +24,8 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/scarr-one/configuration.nix
-        home-manager.nixosModules.home-manager
+        
+        inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -32,11 +33,12 @@
           home-manager.users.neonscar = {
             imports = [
               ./home/home.nix
-              niri.homeManagerModules.niri
+              inputs.niri.homeManagerModules.niri
             ];
           };
         }
-        niri.nixosModules.niri
+
+        inputs.niri.nixosModules.niri
       ];
     };
   };
