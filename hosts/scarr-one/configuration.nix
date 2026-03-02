@@ -44,11 +44,13 @@
     jack.enable = true;
   };
 
+  # Virtualization
+  virtualisation.libvirtd.enable = true;
+
   # User Account
   users.users.neonscar = {
     isNormalUser = true;
     description = "neonscar";
-  virtualisation.libvirtd.enable = true;
     extraGroups = [ "networkmanager" "wheel" "video" "input" "libvirtd" ];
     shell = pkgs.fish;
   };
@@ -73,7 +75,6 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" ]; })
   ];
 
-  # State Version
   # Set Neovim as the default editor
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
