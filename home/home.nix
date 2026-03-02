@@ -16,7 +16,7 @@
   home = {
     username = "neonscar";
     homeDirectory = "/home/neonscar";
-    stateVersion = "23.11";
+    stateVersion = "25.11";
   };
 
   home.packages = with pkgs; [

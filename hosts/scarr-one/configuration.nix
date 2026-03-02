@@ -66,5 +66,5 @@
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.11";
 }
