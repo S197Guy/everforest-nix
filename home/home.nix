@@ -42,7 +42,7 @@
     mpv
     vlc
     zathura
-    okular
+    kdePackages.okular
     remmina
     librewolf
     ranger
