@@ -3,26 +3,23 @@
   pkgs,
   ...
 }: {
-  # Import modular home configurations
   imports = [
     ./desktop/waybar.nix
     ./desktop/launcher.nix
-    ./desktop/niri
+    ./desktop/niri/default.nix
     ./terminal/alacritty.nix
     ./style/gtk.nix
     ./shell/fish.nix
-    ./neovim
+    ./neovim/default.nix
   ];
 
   home = {
     username = "neonscar";
     homeDirectory = "/home/neonscar";
-    stateVersion = "23.11"; # Default NixOS state version
+    stateVersion = "23.11";
   };
 
-  # Packages that do not have a dedicated module
   home.packages = with pkgs; [
-    # Core System Utils
     btop
     eza
     ripgrep
@@ -35,8 +32,6 @@
     cliphist
     nautilus
     fastfetch
-    
-    # Connectivity
     networkmanagerapplet
     blueman
   ];
