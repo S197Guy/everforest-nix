@@ -34,10 +34,24 @@
     jack.enable = true;
   };
 
-  # 5. Virtualisation
+  # 5. Virtualisation & Containers
   virtualisation.libvirtd.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
+  programs.virt-manager.enable = true;
 
-  # 6. User Setup
+  # 6. Gaming Support
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  programs.gamemode.enable = true;
+
+  # 7. User Setup
   users.users.neonscar = {
     isNormalUser = true;
     description = "neonscar";
@@ -45,32 +59,38 @@
     shell = pkgs.fish;
   };
 
-  # 7. System-wide packages
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-    curl
-    wget
-    pciutils
-    usbutils
-    btrfs-progs
-    bolt
-    # Nix helpers
-    nix-output-monitor
-    nh # Nix Helper
-  ];
+  # 8. System-wide packages
+  environment.systemPackages = with pkgs;
+    [
+      git
+      neovim
+      curl
+      wget
+      pciutils
+      usbutils
+      btrfs-progs
+      bolt
+      # Nix helpers
+      nix-output-monitor
+      nh
+      # Utilities from Everforest
+      duf
+      glances
+      smartmontools
+      upower
+      unrar
+      unzip
+    ];
 
   programs.fish.enable = true;
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
-  # 8. Experimental Features (for Flakes)
+  # 9. Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # 9. Timezone & Locale
-  time.timeZone = "America/Denver"; # Adjusted based on your timestamps
+  time.timeZone = "America/Denver";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # 10. State Version
   system.stateVersion = "25.11";
 }
