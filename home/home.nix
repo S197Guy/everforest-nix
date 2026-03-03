@@ -58,13 +58,9 @@
     virt-viewer
 
     # Custom Apps/Utils (Config Only for now)
-    # noctalia-shell (not in nixpkgs)
-    # noctalia-qs (not in nixpkgs)
   ];
 
   # Symlink Noctalia config
-  home.file.".config/noctalia" = {
-    source = ./noctalia-stub; # We will create a stub or link it later
     recursive = true;
   };
 
