@@ -1,27 +1,10 @@
-{
-  pkgs,
-  ...
-}: {
-  programs.fish = {
-    enable = true;
-    # Home Manager can manage fish directly, but we will source your existing config.fish
-    # to maintain compatibility during the transition.
-    interactiveShellInit = "source ~/.config/fish/config.fish";
-  };
+{ pkgs, ... }: {
+  programs.fish.enable = true;
+  
+  # Link individual config files instead of the whole directory
+  xdg.configFile."fish/config.fish".source = ./config/config.fish;
+  xdg.configFile."fish/functions".source = ./config/functions;
+  xdg.configFile."fish/conf.d".source = ./config/conf.d;
 
-  # Symlink the copied fish config files
-  home.file.".config/fish" = {
-    source = ./config;
-    recursive = true;
-  };
-
-  # Ensure fish shell dependencies are in the user profile
-  home.packages = with pkgs; [
-    eza
-    fastfetch
-    ripgrep
-    bat
-    fzf
-    starship
-  ];
+  home.packages = with pkgs; [ eza fastfetch ripgrep bat fzf starship ];
 }
