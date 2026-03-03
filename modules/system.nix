@@ -86,10 +86,13 @@
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
-  # 9. Experimental Features
+  # 9. Nix Settings & Experimental Features
   nixpkgs.config.allowUnfree = true;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = [ "https://niri.cachix.org" ];
+    trusted-public-keys = [ "niri.cachix.org-1:Wv0Om607ZpS6cq979S0WNoX57H96p7nC9i0i+V35uYk=" ];
+  };
 
   time.timeZone = "America/Denver";
   i18n.defaultLocale = "en_US.UTF-8";
