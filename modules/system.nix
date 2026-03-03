@@ -87,6 +87,7 @@
   programs.neovim.defaultEditor = true;
 
   # 9. Nix Settings & Experimental Features
+  services.displayManager.ly.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
