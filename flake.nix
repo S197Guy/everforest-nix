@@ -26,11 +26,11 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.neonscar = {
             imports = [
               ./home/home.nix
-              # removed redundant niri.homeModules.niri import
             ];
           };
         }
