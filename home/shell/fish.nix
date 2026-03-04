@@ -1,14 +1,29 @@
 { pkgs, lib, ... }: {
   programs.fish.enable = true;
-  
-  # Use mkForce to override Home Manager's auto-generated config.fish
+
+  # Instead of linking the whole directory as a store symlink,
+  # we link the files into the home directory where they remain writable.
+  # Using mkForce ensures our config is the one used.
   xdg.configFile."fish/config.fish".source = lib.mkForce ./config/config.fish;
   
-  # Link functions and conf.d
-  xdg.configFile."fish/functions".source = ./config/functions;
-  xdg.configFile."fish/conf.d".source = ./config/conf.d;
-  xdg.configFile."fish/themes".source = ./config/themes;
-  xdg.configFile."fish/completions".source = ./config/completions;
+  # We use the recursive home.file approach but for the subdir to ensure writability
+  # for things like fish_variables which Fish expects to be able to create.
+  home.file.".config/fish/functions" = {
+    source = ./config/functions;
+    recursive = true;
+  };
+  home.file.".config/fish/conf.d" = {
+    source = ./config/conf.d;
+    recursive = true;
+  };
+  home.file.".config/fish/completions" = {
+    source = ./config/completions;
+    recursive = true;
+  };
+  home.file.".config/fish/themes" = {
+    source = ./config/themes;
+    recursive = true;
+  };
 
   home.packages = with pkgs; [ eza fastfetch ripgrep bat fzf starship ];
 }
