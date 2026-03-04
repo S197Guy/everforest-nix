@@ -40,7 +40,23 @@
   };
   services.samba-wsdd.enable = true;
 
-  # 4. Audio (Pipewire)
+  # 4. Drive Mounts (Migration from CachyOS)
+  fileSystems."/mnt/crucial" = {
+    device = "/dev/disk/by-uuid/daaf2ae6-89a6-4ef2-964c-98359a61784c";
+    fsType = "ext4";
+    options = [ "defaults" "nofail" ];
+  };
+
+  fileSystems."/mnt/neonsyn" = {
+    device = "//192.168.1.68/neonsyn";
+    fsType = "cifs";
+    options = let
+      # this line prevents the system from failing if the NAS is offline
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,nofail";
+    in [ "${automount_opts},credentials=/etc/samba/.neonsyn_creds,uid=1000,gid=1000,iocharset=utf8,rw,nobrl,vers=3.1.1" ];
+  };
+
+  # 5. Audio (Pipewire)
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -50,7 +66,7 @@
     jack.enable = true;
   };
 
-  # 5. Virtualisation & Containers
+  # 6. Virtualisation & Containers
   virtualisation.libvirtd.enable = true;
   virtualisation.podman = {
     enable = true;
@@ -59,7 +75,7 @@
   };
   programs.virt-manager.enable = true;
 
-  # 6. Gaming Support
+  # 7. Gaming Support
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -67,7 +83,7 @@
   };
   programs.gamemode.enable = true;
 
-  # 7. User Setup
+  # 8. User Setup
   users.users.neonscar = {
     isNormalUser = true;
     description = "neonscar";
@@ -75,7 +91,7 @@
     shell = pkgs.fish;
   };
 
-  # 8. System-wide packages
+  # 9. System-wide packages
   environment.systemPackages = with pkgs;
     [
       git
@@ -110,7 +126,7 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  # 9. Nix Settings & Experimental Features
+  # 10. Nix Settings & Experimental Features
   services.greetd = {
     enable = true;
     settings = {
