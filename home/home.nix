@@ -17,6 +17,9 @@
     username = "neonscar";
     homeDirectory = "/home/neonscar";
     stateVersion = "25.11";
+    sessionVariables = {
+      NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+    };
   };
 
   home.packages = with pkgs; [
