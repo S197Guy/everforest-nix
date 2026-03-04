@@ -1,16 +1,15 @@
 { pkgs, lib, ... }: {
-  programs.fish.enable = true;
-  
-  # Add local npm binaries to path
-  programs.fish.interactiveShellInit = "fish_add_path /home/neonscar/.npm-global/bin";
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      # Add local npm binaries to path persistently
+      fish_add_path -g /home/neonscar/.npm-global/bin
+    '';
+  };
 
-  # Instead of linking the whole directory as a store symlink,
-  # we link the files into the home directory where they remain writable.
-  # Using mkForce ensures our config is the one used.
+  # Link the config files while maintaining writability for the directory
   xdg.configFile."fish/config.fish".source = lib.mkForce ./config/config.fish;
   
-  # We use the recursive home.file approach but for the subdir to ensure writability
-  # for things like fish_variables which Fish expects to be able to create.
   home.file.".config/fish/functions" = {
     source = ./config/functions;
     recursive = true;
