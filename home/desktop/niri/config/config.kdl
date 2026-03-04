@@ -1,6 +1,3 @@
-// Unified Everforest Niri Configuration (Niri 25.11+ Syntax)
-
-// --- Workspaces ---
 workspace "browse" { open-on-output "DP-2"; }
 workspace "social" { open-on-output "DP-2"; }
 workspace "prompt" { open-on-output "DP-1"; }
@@ -9,27 +6,25 @@ workspace "remote" { open-on-output "DP-1"; }
 workspace "virtual" { open-on-output "DP-1"; }
 workspace "stream" { open-on-output "DP-1"; }
 
-// --- Startup Applications ---
 spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
 spawn-sh-at-startup "swww-daemon" 
 spawn-sh-at-startup "fuzzel"
 
-// --- Layout & Theming ---
 layout {
     gaps 6
     center-focused-column "never"
     background-color "transparent"
 
     focus-ring {
-        active-color   "#a7c080"
+        active-color "#a7c080"
         inactive-color "#232a2e"
-        urgent-color   "#e67e80"
+        urgent-color "#e67e80"
     }
 
     border {
-        active-color   "#a7c080"
+        active-color "#a7c080"
         inactive-color "#232a2e"
-        urgent-color   "#e67e80"
+        urgent-color "#e67e80"
     }
 
     shadow {
@@ -37,9 +32,9 @@ layout {
     }
 
     tab-indicator {
-        active-color   "#a7c080"
+        active-color "#a7c080"
         inactive-color "#4e6924"
-        urgent-color   "#e67e80"
+        urgent-color "#e67e80"
     }
 
     insert-hint {
@@ -47,22 +42,10 @@ layout {
     }
 }
 
-// --- Recent Windows (Alt-Tab) ---
-// Note: This is a top-level node in Niri 25.11+
-recent-windows {
-    highlight {
-        active-color "#a7c080"
-        urgent-color "#e67e80"
-    }
-}
-
-// --- Hotkey Overlay ---
-// Note: This is a top-level node
 hotkey-overlay {
     skip-at-startup
 }
 
-// --- Input & Environment ---
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
 
@@ -196,40 +179,26 @@ window-rule {
     open-on-workspace "virtual"
     open-maximized true
 }
+
 binds {
 
     // ────────────── Keybindings ──────────────
     // https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
 
-//    // ─── noctalia-shell keybinds ───
-//    // https://docs.noctalia.dev/getting-started/keybinds/
 
     Mod+Shift+SLASH                     { show-hotkey-overlay; }
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Space                    { spawn "fuzzel"; }
     Mod+B                               hotkey-overlay-title="Open Browser: librewolf" { spawn "librewolf"; }
     Mod+C                               hotkey-overlay-title="Open Chat: Discord" { spawn "discord"; }
-//    Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-//    Mod+Shift+Q                        hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
 
     // Please choose your own file manager.
     Mod+E                               hotkey-overlay-title="File Manager: Ranger" { spawn-sh "alacritty --class ranger -e ranger ~/"; }
 
     // ─── Media Controls ───
-//    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-//    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-//    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-//    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
-//    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-//    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-//    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-//    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
 
     // ─── Brightness Controls ───
-//    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-//    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
 
     // ─── Window Movement and Focus ───
     Mod+Q                               { close-window; }
