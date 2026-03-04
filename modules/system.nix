@@ -19,10 +19,28 @@
     ];
   };
 
-  # 3. Networking
+  # 3. Networking & Discovery
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  
+  # Enable discovery for SMB shares in Nautilus
+  services.gvfs.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      userServices = true;
+    };
+  };
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    # Enables Windows-style discovery
+    wsdd = true;
+  };
 
   # 4. Audio (Pipewire)
   security.rtkit.enable = true;
@@ -70,16 +88,17 @@
       usbutils
       btrfs-progs
       bolt
-      # Nix helpers
       nix-output-monitor
       nh
-      # Utilities from Everforest
       duf
       glances
       smartmontools
       upower
       unrar
       unzip
+      # Samba client tools for discovery
+      cifs-utils
+      samba
     ];
 
   programs.fish.enable = true;
