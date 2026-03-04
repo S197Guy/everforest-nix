@@ -47,11 +47,13 @@ layout {
     }
 }
 
+hotkey-overlay {
 recent-windows {
     highlight {
         active-color "#a7c080"
         urgent-color "#e67e80"
     }
+}
 }
 
 // --- Keybinds ---
