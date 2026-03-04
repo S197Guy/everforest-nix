@@ -9,11 +9,17 @@
         spacing = 4;
         modules-left = [ "custom/launcher" "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "tray" "pulseaudio" "cpu" "memory" "network" ];
+        modules-right = [ "tray" "pulseaudio" "cpu" "memory" "network" "custom/power" ];
 
         "custom/launcher" = {
           format = " 󱓟 ";
           on-click = "fuzzel";
+          tooltip = false;
+        };
+
+        "custom/power" = {
+          format = "󰐥 ";
+          on-click = "wlogout";
           tooltip = false;
         };
 
@@ -67,6 +73,11 @@
         color: #a7c080;
         padding-left: 10px;
         padding-right: 5px;
+      }
+      #custom-power {
+        color: #e67e80; /* Everforest Red */
+        padding-right: 15px;
+        padding-left: 5px;
       }
       #clock, #pulseaudio, #cpu, #memory, #network, #tray {
         padding: 0 10px;
