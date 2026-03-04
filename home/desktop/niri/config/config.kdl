@@ -1,6 +1,5 @@
-// Consolidated Everforest Niri Configuration
+// Unified Everforest Niri Configuration
 
-// --- Workspaces ---
 workspace "browse" { open-on-output "DP-2"; }
 workspace "social" { open-on-output "DP-2"; }
 workspace "prompt" { open-on-output "DP-1"; }
@@ -9,12 +8,12 @@ workspace "remote" { open-on-output "DP-1"; }
 workspace "virtual" { open-on-output "DP-1"; }
 workspace "stream" { open-on-output "DP-1"; }
 
-// --- Startup Applications ---
-spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
-spawn-sh-at-startup "swww-daemon" 
-spawn-sh-at-startup "fuzzel"
+// ────────────── Startup Applications ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-// --- Layout & Theming ---
+    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    spawn-sh-at-startup "swww-daemon" 
+    spawn-sh-at-startup "fuzzel"
 layout {
     gaps 6
     center-focused-column "never"
@@ -48,18 +47,132 @@ layout {
 }
 
 hotkey-overlay {
-recent-windows {
-    highlight {
-        active-color "#a7c080"
-        urgent-color "#e67e80"
+    skip-at-startup
+    recent-windows {
+        highlight {
+            active-color "#a7c080"
+            urgent-color "#e67e80"
+        }
     }
 }
+
+// ────────────── Input Configuration ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            layout "us" // Use the American keyboard layout
+        }
+        numlock // Enable numlock on startup
+    }
+
+    touchpad {
+        tap // Enable tap-to-click
+        natural-scroll // Enable natural (macOS-style) scrolling
+    }
+
+    focus-follows-mouse // Automatically focus windows under the mouse pointer
+    workspace-auto-back-and-forth // Enable workspace back & forth switching
 }
 
-// --- Keybinds ---
-// (We will append the full keybinds, input, display, and rules content next)
+// ────────────── Output Configuration ──────────────
+// You can run `niri msg outputs` to get the correct name for your displays.
+// You will have to remove "/-" and edit it before it takes effect.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-// --- keybinds.kdl ---
+ output "DP-1" {
+    mode "2560x1440@164.802" // Set resolution and refresh rate
+    position x=1920 y=0
+    focus-at-startup
+    scale 1 // No scaling (use 2 for HiDPI)
+    }
+ output "DP-2" {
+    mode "1920x1080@60.000"
+    position x=0 y=0
+    scale 1
+   }
+
+
+window-rule {
+    geometry-corner-radius 13
+    clip-to-geometry true
+}
+
+layer-rule {
+    place-within-backdrop true
+}
+
+window-rule {
+    match app-id="(?i)discord"
+    open-maximized true
+    open-on-workspace "social"
+}
+
+window-rule {
+    match app-id="(?i)librewolf"
+    open-maximized true
+    open-on-workspace "browse"
+}
+
+window-rule {
+    match app-id="(?i)ranger"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)steam"
+    open-maximized true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="(?i)net.lutris.Lutris"
+    open-maximized true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="(?i)org.remmina.Remmina"
+    open-maximized true
+    open-on-output "DP-1"
+    open-on-workspace "remote"
+}
+
+window-rule {
+    match app-id="(?i)moonlight"
+    open-maximized true
+    open-on-output "DP-1"
+    open-on-workspace "remote"
+}
+
+window-rule {
+    match app-id="(?i)Alacritty"
+    open-on-output "DP-1"
+    open-on-workspace "prompt"
+}
+
+window-rule {
+    match app-id="(?i)com.obsproject.Studio"
+    open-maximized true
+    open-on-workspace "stream"
+}
+
+window-rule {
+    match app-id="(?i)org.gnome.Nautilus"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)virt-manager"
+    open-on-workspace "virtual"
+}
+
+window-rule {
+    match app-id="(?i)Podman Desktop"
+    open-on-workspace "virtual"
+    open-maximized true
+}
 binds {
 
     // ────────────── Keybindings ──────────────
@@ -72,7 +185,7 @@ binds {
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-//    Mod+Space                    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "fuzzel"; }
+    Mod+Space                    { spawn "fuzzel"; }
     Mod+B                               hotkey-overlay-title="Open Browser: librewolf" { spawn "librewolf"; }
     Mod+C                               hotkey-overlay-title="Open Chat: Discord" { spawn "discord"; }
 //    Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
@@ -199,127 +312,6 @@ binds {
     Mod+O                               repeat=false { toggle-overview; }
 }
 
-// --- input.kdl ---
-// ────────────── Input Configuration ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
-
-input {
-    keyboard {
-        xkb {
-            layout "us" // Use the American keyboard layout
-        }
-        numlock // Enable numlock on startup
-    }
-
-    touchpad {
-        tap // Enable tap-to-click
-        natural-scroll // Enable natural (macOS-style) scrolling
-    }
-
-    focus-follows-mouse // Automatically focus windows under the mouse pointer
-    workspace-auto-back-and-forth // Enable workspace back & forth switching
-}
-
-// --- display.kdl ---
-// ────────────── Output Configuration ──────────────
-// You can run `niri msg outputs` to get the correct name for your displays.
-// You will have to remove "/-" and edit it before it takes effect.
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-
- output "DP-1" {
-    mode "2560x1440@164.802" // Set resolution and refresh rate
-    position x=1920 y=0
-    focus-at-startup
-    scale 1 // No scaling (use 2 for HiDPI)
-    }
- output "DP-2" {
-    mode "1920x1080@60.000"
-    position x=0 y=0
-    scale 1
-   }
-
-
-// --- rules.kdl ---
-window-rule {
-    geometry-corner-radius 13
-    clip-to-geometry true
-}
-
-layer-rule {
-    place-within-backdrop true
-}
-
-window-rule {
-    match app-id="(?i)discord"
-    open-maximized true
-    open-on-workspace "social"
-}
-
-window-rule {
-    match app-id="(?i)librewolf"
-    open-maximized true
-    open-on-workspace "browse"
-}
-
-window-rule {
-    match app-id="(?i)ranger"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="(?i)steam"
-    open-maximized true
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match app-id="(?i)net.lutris.Lutris"
-    open-maximized true
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match app-id="(?i)org.remmina.Remmina"
-    open-maximized true
-    open-on-output "DP-1"
-    open-on-workspace "remote"
-}
-
-window-rule {
-    match app-id="(?i)moonlight"
-    open-maximized true
-    open-on-output "DP-1"
-    open-on-workspace "remote"
-}
-
-window-rule {
-    match app-id="(?i)Alacritty"
-    open-on-output "DP-1"
-    open-on-workspace "prompt"
-}
-
-window-rule {
-    match app-id="(?i)com.obsproject.Studio"
-    open-maximized true
-    open-on-workspace "stream"
-}
-
-window-rule {
-    match app-id="(?i)org.gnome.Nautilus"
-    open-maximized true
-}
-
-window-rule {
-    match app-id="(?i)virt-manager"
-    open-on-workspace "virtual"
-}
-
-window-rule {
-    match app-id="(?i)Podman Desktop"
-    open-on-workspace "virtual"
-    open-maximized true
-}
-// --- misc.kdl ---
     prefer-no-csd
     screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
 
@@ -337,6 +329,4 @@ window-rule {
         honor-xdg-activation-with-invalid-serial
     }
 
-    hotkey-overlay {
-       skip-at-startup
     }
