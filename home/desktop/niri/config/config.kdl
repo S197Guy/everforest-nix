@@ -23,6 +23,7 @@ layout {
     }
 
     border {
+        width 1.5
         active-color "#a7c080"
         inactive-color "#232a2e"
         urgent-color "#e67e80"
@@ -305,3 +306,8 @@ binds {
     Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     Mod+O                               repeat=false { toggle-overview; }
 }
+
+   output "Virtual-1" {
+      mode "1920x1080@60.000"
+      scale 1
+   }
