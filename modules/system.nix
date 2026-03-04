@@ -24,7 +24,6 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   
-  # Enable discovery for SMB shares in Nautilus
   services.gvfs.enable = true;
   services.avahi = {
     enable = true;
@@ -38,9 +37,8 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    # Enables Windows-style discovery
-    wsdd = true;
   };
+  services.samba-wsdd.enable = true;
 
   # 4. Audio (Pipewire)
   security.rtkit.enable = true;
@@ -96,7 +94,6 @@
       upower
       unrar
       unzip
-      # Samba client tools for discovery
       cifs-utils
       samba
     ];
