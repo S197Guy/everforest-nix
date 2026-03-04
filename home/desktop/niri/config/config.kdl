@@ -23,7 +23,7 @@ layout {
     }
 
     border {
-        width 1.5
+        width 1
         active-color "#a7c080"
         inactive-color "#232a2e"
         urgent-color "#e67e80"
@@ -156,6 +156,7 @@ window-rule {
 
 window-rule {
     match app-id="(?i)Alacritty"
+      opacity 0.85
     open-on-output "DP-1"
     open-on-workspace "prompt"
 }
