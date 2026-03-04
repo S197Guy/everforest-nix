@@ -2,12 +2,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      name = "Everforest-Dark-B";
+      package = pkgs.everforest-gtk-theme;
     };
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Everforest-Dark";
+      package = pkgs.everforest-gtk-theme;
     };
     cursorTheme = {
       name = "Adwaita";
@@ -19,7 +19,6 @@
       size = 11;
     };
     
-    # Force modern GTK4/Libadwaita apps to use dark mode
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
@@ -28,7 +27,6 @@
     };
   };
 
-  # Set the dconf preference for the system color scheme
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
