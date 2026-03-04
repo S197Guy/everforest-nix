@@ -9,6 +9,7 @@ workspace "stream" { open-on-output "DP-1"; }
 spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
 spawn-sh-at-startup "swww-daemon" 
 spawn-sh-at-startup "fuzzel"
+    spawn-sh-at-startup "waybar"
 
 layout {
     gaps 6
