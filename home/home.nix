@@ -56,13 +56,7 @@
     # Virtualization/Containers UI
     podman-desktop
     virt-viewer
-
-    # Custom Apps/Utils (Config Only for now)
   ];
-
-  # Symlink Noctalia config
-    recursive = true;
-  };
 
   programs.home-manager.enable = true;
 }
