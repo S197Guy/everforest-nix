@@ -191,6 +191,7 @@ binds {
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
+      Mod+Space                           hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "fuzzel"; }
     Mod+B                               hotkey-overlay-title="Open Browser: librewolf" { spawn "librewolf"; }
     Mod+C                               hotkey-overlay-title="Open Chat: Discord" { spawn "discord"; }
 
