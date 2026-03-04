@@ -86,6 +86,14 @@
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
+  fonts.packages = with pkgs; [ 
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    font-awesome
+    nerd-fonts.jetbrains-mono
+  ];
+
   # 9. Nix Settings & Experimental Features
   services.greetd = {
     enable = true;
