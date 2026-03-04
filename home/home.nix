@@ -64,5 +64,6 @@
     virt-viewer
   ];
 
+  home.file.".npmrc".text = "prefix=${config.home.homeDirectory}/.npm-global";
   programs.home-manager.enable = true;
 }
