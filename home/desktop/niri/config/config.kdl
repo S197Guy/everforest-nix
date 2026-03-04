@@ -197,6 +197,7 @@ binds {
       Mod+Space                           hotkey-overlay-title="Open App Launcher: Fuzzel" { spawn "fuzzel"; }
     Mod+B                               hotkey-overlay-title="Open Browser: librewolf" { spawn "librewolf"; }
     Mod+C                               hotkey-overlay-title="Open Chat: Discord" { spawn "discord"; }
+      Mod+Alt+L                           hotkey-overlay-title="Lock Screen" { spawn "swaylock -f -c 2b3339"; }
 
     // Please choose your own file manager.
     Mod+E                               hotkey-overlay-title="File Manager: Ranger" { spawn-sh "alacritty --class ranger -e ranger ~/"; }
