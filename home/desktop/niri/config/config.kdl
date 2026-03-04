@@ -1,6 +1,6 @@
-// Consolidated Niri Configuration
+// Consolidated Everforest Niri Configuration
 
-// --- Start of workspaces.kdl ---
+// --- Workspaces ---
 workspace "browse" { open-on-output "DP-2"; }
 workspace "social" { open-on-output "DP-2"; }
 workspace "prompt" { open-on-output "DP-1"; }
@@ -9,18 +9,55 @@ workspace "remote" { open-on-output "DP-1"; }
 workspace "virtual" { open-on-output "DP-1"; }
 workspace "stream" { open-on-output "DP-1"; }
 
-// --- End of workspaces.kdl ---
+// --- Startup Applications ---
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
+spawn-sh-at-startup "swww-daemon" 
+spawn-sh-at-startup "fuzzel"
 
-// --- Start of autostart.kdl ---
-// ────────────── Startup Applications ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
+// --- Layout & Theming ---
+layout {
+    gaps 6
+    center-focused-column "never"
+    background-color "transparent"
 
-    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
-    spawn-sh-at-startup "swww-daemon" 
-    spawn-sh-at-startup "fuzzel"
-// --- End of autostart.kdl ---
+    focus-ring {
+        active-color   "#a7c080"
+        inactive-color "#232a2e"
+        urgent-color   "#e67e80"
+    }
 
-// --- Start of keybinds.kdl ---
+    border {
+        active-color   "#a7c080"
+        inactive-color "#232a2e"
+        urgent-color   "#e67e80"
+    }
+
+    shadow {
+        color "#47525870"
+    }
+
+    tab-indicator {
+        active-color   "#a7c080"
+        inactive-color "#4e6924"
+        urgent-color   "#e67e80"
+    }
+
+    insert-hint {
+        color "#a7c08080"
+    }
+}
+
+recent-windows {
+    highlight {
+        active-color "#a7c080"
+        urgent-color "#e67e80"
+    }
+}
+
+// --- Keybinds ---
+// (We will append the full keybinds, input, display, and rules content next)
+
+// --- keybinds.kdl ---
 binds {
 
     // ────────────── Keybindings ──────────────
@@ -33,7 +70,7 @@ binds {
 
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Space                    { spawn "fuzzel"; }
+//    Mod+Space                    hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "fuzzel"; }
     Mod+B                               hotkey-overlay-title="Open Browser: librewolf" { spawn "librewolf"; }
     Mod+C                               hotkey-overlay-title="Open Chat: Discord" { spawn "discord"; }
 //    Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
@@ -160,9 +197,7 @@ binds {
     Mod+O                               repeat=false { toggle-overview; }
 }
 
-// --- End of keybinds.kdl ---
-
-// --- Start of input.kdl ---
+// --- input.kdl ---
 // ────────────── Input Configuration ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 
@@ -183,9 +218,7 @@ input {
     workspace-auto-back-and-forth // Enable workspace back & forth switching
 }
 
-// --- End of input.kdl ---
-
-// --- Start of display.kdl ---
+// --- display.kdl ---
 // ────────────── Output Configuration ──────────────
 // You can run `niri msg outputs` to get the correct name for your displays.
 // You will have to remove "/-" and edit it before it takes effect.
@@ -204,34 +237,7 @@ input {
    }
 
 
-// --- End of display.kdl ---
-
-// --- Start of layout.kdl ---
-    layout {
-        gaps 6 // Gap between windows
-        center-focused-column "never" // Don’t auto-center focused column
-
-        background-color "transparent" // <- needed for noctalia-shell to set wallpaper
-
-        preset-column-widths {
-            proportion 0.33333
-            proportion 0.5
-            proportion 0.66667
-        }
-	default-column-width { proportion 0.5; }
-	focus-ring {
-	    width 1.5	
-	}
-	border {
-	    off
-	}
-
-        struts {}
-    }
-
-// --- End of layout.kdl ---
-
-// --- Start of rules.kdl ---
+// --- rules.kdl ---
 window-rule {
     geometry-corner-radius 13
     clip-to-geometry true
@@ -311,9 +317,7 @@ window-rule {
     open-on-workspace "virtual"
     open-maximized true
 }
-// --- End of rules.kdl ---
-
-// --- Start of misc.kdl ---
+// --- misc.kdl ---
     prefer-no-csd
     screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
 
@@ -334,43 +338,3 @@ window-rule {
     hotkey-overlay {
        skip-at-startup
     }
-
-// --- End of misc.kdl ---
-
-
-// ────────────── Everforest Theme (formerly noctalia.kdl) ──────────────
-layout {
-
-    focus-ring {
-        active-color   "#a7c080"
-        inactive-color "#232a2e"
-        urgent-color   "#e67e80"
-    }
-
-    border {
-        active-color   "#a7c080"
-        inactive-color "#232a2e"
-        urgent-color   "#e67e80"
-    }
-
-    shadow {
-        color "#47525870"
-    }
-
-    tab-indicator {
-        active-color   "#a7c080"
-        inactive-color "#4e6924"
-        urgent-color   "#e67e80"
-    }
-
-    insert-hint {
-        color "#a7c08080"
-    }
-}
-
-recent-windows {
-    highlight {
-        active-color "#a7c080"
-        urgent-color "#e67e80"
-    }
-}
