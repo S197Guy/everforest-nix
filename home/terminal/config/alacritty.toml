@@ -5,8 +5,9 @@ WINIT_X11_SCALE_FACTOR = "1"
 [window]
 dynamic_padding = true
 decorations = "full"
-title = "Alacritty@CachyOS"
-opacity = 0.8
+title = "Alacritty@Everforest-Nix"
+opacity = 0.85
+blur = true
 decorations_theme_variant = "Dark"
 
 [window.dimensions]
@@ -158,6 +159,3 @@ action = "ResetFontSize"
 live_config_reload = true
 working_directory = "None"
 
-[window]
-opacity = 0.85
-blur = true
