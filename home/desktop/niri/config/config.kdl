@@ -1,5 +1,6 @@
-// Unified Everforest Niri Configuration
+// Unified Everforest Niri Configuration (Niri 25.11+ Syntax)
 
+// --- Workspaces ---
 workspace "browse" { open-on-output "DP-2"; }
 workspace "social" { open-on-output "DP-2"; }
 workspace "prompt" { open-on-output "DP-1"; }
@@ -8,12 +9,12 @@ workspace "remote" { open-on-output "DP-1"; }
 workspace "virtual" { open-on-output "DP-1"; }
 workspace "stream" { open-on-output "DP-1"; }
 
-// ────────────── Startup Applications ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
+// --- Startup Applications ---
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
+spawn-sh-at-startup "swww-daemon" 
+spawn-sh-at-startup "fuzzel"
 
-    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
-    spawn-sh-at-startup "swww-daemon" 
-    spawn-sh-at-startup "fuzzel"
+// --- Layout & Theming ---
 layout {
     gaps 6
     center-focused-column "never"
@@ -46,14 +47,36 @@ layout {
     }
 }
 
+// --- Recent Windows (Alt-Tab) ---
+// Note: This is a top-level node in Niri 25.11+
+recent-windows {
+    highlight {
+        active-color "#a7c080"
+        urgent-color "#e67e80"
+    }
+}
+
+// --- Hotkey Overlay ---
+// Note: This is a top-level node
 hotkey-overlay {
     skip-at-startup
-    recent-windows {
-        highlight {
-            active-color "#a7c080"
-            urgent-color "#e67e80"
-        }
-    }
+}
+
+// --- Input & Environment ---
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
+
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORM "wayland"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    QT_QPA_PLATFORMTHEME "gtk3"
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
 }
 
 // ────────────── Input Configuration ──────────────
@@ -310,21 +333,4 @@ binds {
     CTRL+ALT+Delete                     { quit; } // Also quits Niri
     Mod+Shift+P                         { power-off-monitors; } // Turn off screens (useful for OLED or privacy)
     Mod+O                               repeat=false { toggle-overview; }
-}
-
-prefer-no-csd
-
-screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
-
-environment {
-    ELECTRON_OZONE_PLATFORM_HINT "auto"
-    QT_QPA_PLATFORM "wayland"
-    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-    XDG_SESSION_TYPE "wayland"
-    XDG_CURRENT_DESKTOP "niri"
-    QT_QPA_PLATFORMTHEME "gtk3"
-}
-
-debug {
-    honor-xdg-activation-with-invalid-serial
 }
