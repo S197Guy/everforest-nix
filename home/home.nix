@@ -35,6 +35,7 @@
     fastfetch
     networkmanagerapplet
     blueman
+    pavucontrol
     
     # Productivity & Media
     discord
