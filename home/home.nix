@@ -36,6 +36,8 @@
     networkmanagerapplet
     blueman
     pavucontrol
+    swaylock-effects
+    wlogout
     
     # Productivity & Media
     discord
