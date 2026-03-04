@@ -2,7 +2,7 @@
   programs.fish.enable = true;
   
   # Add local npm binaries to path
-  programs.fish.shellInit = "fish_add_path /home/neonscar/.npm-global/bin";
+  programs.fish.interactiveShellInit = "fish_add_path /home/neonscar/.npm-global/bin";
 
   # Instead of linking the whole directory as a store symlink,
   # we link the files into the home directory where they remain writable.
