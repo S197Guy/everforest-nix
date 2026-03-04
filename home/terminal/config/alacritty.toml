@@ -157,3 +157,7 @@ action = "ResetFontSize"
 [general]
 live_config_reload = true
 working_directory = "None"
+
+[window]
+opacity = 0.85
+blur = true
