@@ -42,7 +42,10 @@
 
   # 4. Drive Mounts moved to hardware-configuration.nix
 
-  # 5. Audio (Pipewire)
+  # 5. Zram Swap (Match CachyOS)
+  zramSwap.enable = true;
+
+  # 6. Audio (Pipewire)
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -52,7 +55,7 @@
     jack.enable = true;
   };
 
-  # 6. Virtualisation & Containers
+  # 7. Virtualisation & Containers
   virtualisation.libvirtd.enable = true;
   virtualisation.podman = {
     enable = true;
@@ -61,7 +64,7 @@
   };
   programs.virt-manager.enable = true;
 
-  # 7. Gaming Support
+  # 8. Gaming Support
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -70,7 +73,7 @@
   programs.gamemode.enable = true;
   programs.corectrl.enable = true;
 
-  # 8. User Setup
+  # 9. User Setup
   users.users.neonscar = {
     isNormalUser = true;
     description = "neonscar";
@@ -78,7 +81,7 @@
     shell = pkgs.fish;
   };
 
-  # 9. System-wide packages
+  # 10. System-wide packages
   environment.systemPackages = with pkgs;
     [
       git
@@ -121,7 +124,7 @@
     nerd-fonts.iosevka
   ];
 
-  # 10. Nix Settings & Experimental Features
+  # 11. Nix Settings & Experimental Features
   services.greetd = {
     enable = true;
     settings = {
@@ -138,7 +141,7 @@
     trusted-public-keys = [ "niri.cachix.org-1:Wv0Om607ZpS6cq979S0WNoX57H96p7nC9i0i+V35uYk=" ];
   };
 
-  time.timeZone = "America/Denver";
+  time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";
 
   system.stateVersion = "25.11";
