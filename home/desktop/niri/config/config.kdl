@@ -297,7 +297,7 @@ binds {
 
     // ─── Screenshots ───
     // Interactive area capture with editing
-    Print hotkey-overlay-title="Screenshot Area (Interactive)" { spawn-sh "grim -g "$(slurp)" - | swappy -f -"; }
+    Print hotkey-overlay-title="Screenshot Area (Interactive)" { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
     Mod+Print hotkey-overlay-title="Screenshot Screen" { spawn-sh "grim - | swappy -f -"; }
     
     // Niri native as fallback
