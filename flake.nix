@@ -24,7 +24,7 @@
         {
           nixpkgs.overlays = [
             (final: prev: {
-              niri = niri.packages.${system}.niri.overrideAttrs (old: {
+              niri = niri.packages.${system}.niri-stable.overrideAttrs (old: {
                 doCheck = false;
               });
             })
