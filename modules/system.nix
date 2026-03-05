@@ -149,7 +149,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.niri}/bin/niri-session --config ${greetd-niri-config} -- ${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        command = "${pkgs.niri}/bin/niri --config ${greetd-niri-config} -- ${pkgs.alacritty}/bin/alacritty -e ${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session --theme 'border=#a7c080;text=#d3c6aa;prompt=#83c092;time=#e67e80;action=#7fbbb3;button=#dbbc7f;container=#323c41;input=#d3c6aa'";
         user = "greeter";
       };
     };
