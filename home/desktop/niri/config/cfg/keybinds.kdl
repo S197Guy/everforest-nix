@@ -122,9 +122,13 @@ binds {
     Mod+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    MOD+Shift+S	                        { screenshot; }
-    CTRL+Shift+2                        { screenshot-screen; }
-    CTRL+Shift+3                        { screenshot-window; }
+    // Interactive area capture with editing
+    Print hotkey-overlay-title="Screenshot Area (Interactive)" { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
+    Mod+Print hotkey-overlay-title="Screenshot Screen" { spawn-sh "grim - | swappy -f -"; }
+    
+    // Niri native as fallback
+    Mod+Shift+S hotkey-overlay-title="Niri Screenshot" { screenshot; }
+    Ctrl+Print hotkey-overlay-title="Niri Screenshot Screen" { screenshot-screen; }
 
     // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
