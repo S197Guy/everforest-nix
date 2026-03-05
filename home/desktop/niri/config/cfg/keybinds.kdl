@@ -122,15 +122,14 @@ binds {
     Mod+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    // Interactive area capture with editing
-    Print hotkey-overlay-title="Screenshot Area (Interactive)" { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
-    Mod+Print hotkey-overlay-title="Screenshot Screen" { spawn-sh "grim - | swappy -f -"; }
-    
-    // Niri native as fallback
-    Mod+Shift+S hotkey-overlay-title="Niri Screenshot" { screenshot; }
-    Ctrl+Print hotkey-overlay-title="Niri Screenshot Screen" { screenshot-screen; }
-
-    // ─── Emergency Escape Key ───
+    // Area selection
+    Print hotkey-overlay-title="Screenshot Area" { spawn-sh "grim -g \"$(slurp)\" - | swappy -f -"; }
+    // Click a monitor to capture it
+    Shift+Print hotkey-overlay-title="Screenshot Monitor (Click)" { spawn-sh "grim -g \"$(slurp -o)\" - | swappy -f -"; }
+    // Capture focused monitor automatically
+    Mod+Print hotkey-overlay-title="Screenshot Focused Monitor" { spawn-sh "grim -o \"$(niri msg outputs | jq -r '.[] | select(.focused) | .name')\" - | swappy -f -"; }
+    // Capture all monitors
+    Ctrl+Print hotkey-overlay-title="Screenshot All Screens" { spawn-sh "grim - | swappy -f -"; }    // ─── Emergency Escape Key ───
     // Use this when a fullscreen app blocks your keybinds.
     // It disables any active keyboard shortcut inhibitor, restoring control.
     Mod+ESCAPE                          allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
