@@ -5,7 +5,7 @@
 }: {
   imports = [
     ../../modules/system.nix
-    ./hardware-configuration.nix
+    ./hardware-configuration.nix ./extra-mounts.nix
   ];
 
   networking.hostName = "scarr-one";

@@ -14,49 +14,49 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/root" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@root" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/srv" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@srv" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/var/cache" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@cache" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@log" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/var/tmp" =
-    { device = "/dev/disk/by-uuid/da11cb9d-eebe-437d-ada3-686a86995f25";
+    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
       fsType = "btrfs";
       options = [ "subvol=@tmp" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/046C-86DD";
+    { device = "/dev/disk/by-uuid/1BC2-E44A";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
