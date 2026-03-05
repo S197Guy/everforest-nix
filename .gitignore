@@ -1,0 +1,8 @@
+*.secret
+*.key
+*.pem
+*.json
+.env*
+result
+*.qcow2
+*.iso

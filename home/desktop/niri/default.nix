@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     xwayland
+    xwayland-satellite
     wl-clipboard
     swww
     fuzzel

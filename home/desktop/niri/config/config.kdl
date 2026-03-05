@@ -9,7 +9,7 @@ workspace "stream" { open-on-output "DP-1"; }
 spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
 spawn-sh-at-startup "swww-daemon" 
     spawn-sh-at-startup "swww img ~/Pictures/Wallpapers/wallhaven_p9pd23.jpg"
-spawn-sh-at-startup "fuzzel"
+spawn-sh-at-startup "xwayland-satellite"
     spawn-sh-at-startup "waybar"
 
 layout {
@@ -59,6 +59,7 @@ environment {
     XDG_SESSION_TYPE "wayland"
     XDG_CURRENT_DESKTOP "niri"
     QT_QPA_PLATFORMTHEME "gtk3"
+    DISPLAY ":0"
 }
 
 debug {
@@ -295,7 +296,7 @@ binds {
     Mod+W                               { toggle-column-tabbed-display; }
 
     // ─── Screenshots ───
-    MOD+Shift+S	                        { screenshot; }
+    MOD+Shift+S                         { screenshot; }
     CTRL+Shift+2                        { screenshot-screen; }
     CTRL+Shift+3                        { screenshot-window; }
 

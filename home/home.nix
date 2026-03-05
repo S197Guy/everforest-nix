@@ -63,6 +63,18 @@
     # Virtualization/Containers UI
     podman-desktop
     virt-viewer
+
+    # Development Stack
+    go
+    gopls
+    nodejs
+    python3
+    rustc
+    cargo
+    rust-analyzer
+    nil # Nix LSP
+    gcc
+    gnumake
   ];
 
   home.file.".npmrc".text = "prefix=${config.home.homeDirectory}/.npm-global";
