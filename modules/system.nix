@@ -1,14 +1,36 @@
+
+{ pkgs, ... }:
+let
+  greetd-niri-config = pkgs.writeText "greetd-niri-config" ''
+output "DP-1" {
+    mode "2560x1440@164.802"
+}
+output "DP-2" {
+    off
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+    match app-id="Alacritty"
+    open-fullscreen true
+}
+
+window-rule {
+    geometry-corner-radius 0
+}
+  '';
+in
 {
-  pkgs,
-  ...
-}: {
   # 1. Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # 2. Kernel & GPU (AMD Optimized)
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xfffd7fff" "video=DP-2:d" ];
+  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xfffd7fff" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   hardware.graphics = {
@@ -39,8 +61,6 @@
     openFirewall = true;
   };
   services.samba-wsdd.enable = true;
-
-  # 4. Drive Mounts moved to hardware-configuration.nix
 
   # 5. Zram Swap (Match CachyOS)
   zramSwap.enable = true;
@@ -129,7 +149,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        command = "${pkgs.niri}/bin/niri-session --config ${greetd-niri-config} -- ${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
         user = "greeter";
       };
     };
