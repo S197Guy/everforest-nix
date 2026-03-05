@@ -9,6 +9,7 @@
     ./desktop/niri/default.nix
     ./terminal/alacritty.nix
     ./style/gtk.nix
+    ./style/swappy.nix
     ./shell/fish.nix
     ./neovim/default.nix
   ];
@@ -34,6 +35,9 @@
     wget
     curl
     wl-clipboard
+    grim
+    slurp
+    swappy
     cliphist
     nautilus
     fastfetch
