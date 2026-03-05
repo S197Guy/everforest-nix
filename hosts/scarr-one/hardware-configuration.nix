@@ -8,85 +8,60 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "ahci" "xhci_pci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" ];
+      options = [ "subvol=@" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" ];
+      options = [ "subvol=@home" ];
     };
 
   fileSystems."/root" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@root" "compress=zstd" "noatime" ];
+      options = [ "subvol=@root" ];
     };
 
   fileSystems."/srv" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@srv" "compress=zstd" "noatime" ];
+      options = [ "subvol=@srv" ];
     };
 
   fileSystems."/var/cache" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@cache" "compress=zstd" "noatime" ];
+      options = [ "subvol=@cache" ];
     };
 
   fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@log" "compress=zstd" "noatime" ];
+      options = [ "subvol=@log" ];
     };
 
   fileSystems."/var/tmp" =
-    { device = "/dev/disk/by-uuid/48db4a03-13e1-4bfb-a9f0-a30a670deb75";
+    { device = "/dev/disk/by-uuid/99ec47b7-21d3-403d-bc85-931a9600a348";
       fsType = "btrfs";
-      options = [ "subvol=@tmp" "compress=zstd" "noatime" ];
+      options = [ "subvol=@tmp" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1BC2-E44A";
+    { device = "/dev/disk/by-uuid/4C84-A2E1";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  # Migration from CachyOS: Crucial Physical Drive
-  fileSystems."/mnt/crucial" =
-    { device = "/dev/disk/by-uuid/daaf2ae6-89a6-4ef2-964c-98359a61784c";
-      fsType = "ext4";
-      options = [ "defaults" "nofail" ];
-    };
-
-  # SMB Share (Neonsyn)
-  fileSystems."/mnt/neonsyn" =
-    { device = "//192.168.1.68/neonsyn";
-      fsType = "cifs";
-      options = let
-        # this line prevents the system from failing if the NAS is offline
-        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,nofail";
-      in [ "${automount_opts},credentials=/etc/samba/.neonsyn_creds,uid=1000,gid=1000,iocharset=utf8,rw,nobrl,vers=3.1.1" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

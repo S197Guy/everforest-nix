@@ -1,14 +1,16 @@
 { pkgs, lib, ... }: {
   programs.fish = {
     enable = true;
+    # Add local npm binaries to path persistently
     interactiveShellInit = ''
-      # Add local npm binaries to path persistently
       fish_add_path -g /home/neonscar/.npm-global/bin
+      
+      # Source custom fish config from the nix store path
+      source ${./config/config.fish}
     '';
   };
 
-  # Link the config files while maintaining writability for the directory
-  xdg.configFile."fish/config.fish".source = lib.mkForce ./config/config.fish;
+  # Let Home Manager manage the main config.fish to properly source session variables.
   
   home.file.".config/fish/functions" = {
     source = ./config/functions;
@@ -23,7 +25,7 @@
     recursive = true;
   };
   home.file.".config/fish/themes" = {
-    source = ./config/themes;
+    source = ./config/themes; 
     recursive = true;
   };
 
