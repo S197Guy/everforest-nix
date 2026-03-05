@@ -8,7 +8,7 @@
 
   # 2. Kernel & GPU (AMD Optimized)
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xfffd7fff" ];
+  boot.kernelParams = [ "amdgpu.ppfeaturemask=0xfffd7fff" "video=DP-2:d" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   hardware.graphics = {
