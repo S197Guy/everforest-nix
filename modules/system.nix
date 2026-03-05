@@ -128,6 +128,10 @@ in
       corectrl
       gh
       networkmanager-openvpn
+      vulkan-loader
+      vulkan-tools
+      zenity
+      kdePackages.kdialog
     ];
 
   programs.fish.enable = true;
@@ -163,6 +167,16 @@ in
 
   time.timeZone = "America/Phoenix";
   i18n.defaultLocale = "en_US.UTF-8";
+
+  # 12. Desktop Portals (Fixes file pickers and app crashes)
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ 
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config.common.default = "*";
+  };
 
   system.stateVersion = "25.11";
 }
