@@ -10,5 +10,6 @@
   home.packages = with pkgs; [
     gcc gnumake unzip wget curl nodejs
     gopls rust-analyzer nil
+    kdlfmt
   ];
 }

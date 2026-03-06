@@ -272,9 +272,24 @@ vim.filetype.add({
     },
 })
 
+
+vim.lsp.config["kdl_ls"] = {
+    cmd = { "kdlfmt", "format" },
+    filetypes = { "kdl" },
+    root_markers = { ".git" },
+    capabilities = caps,
+}
 ---@diagnostic disable-next-line: invisible
 for name, _ in pairs(vim.lsp.config._configs) do
     if name ~= '*' then
         vim.lsp.enable(name)
     end
 end
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "*.kdl",
+    callback = function()
+        vim.fn.system("kdlfmt format " .. vim.fn.expand("%"))
+        vim.cmd("edit!")
+    end,
+})

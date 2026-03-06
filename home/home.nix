@@ -31,6 +31,7 @@
     ripgrep
     bat
     jq
+    kdlfmt
     rsync
     wget
     curl
