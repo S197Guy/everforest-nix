@@ -176,7 +176,10 @@ in
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
     ];
-    config.common.default = "*";
+    config = {
+      common.default = ["gtk"];
+      niri.default = ["gtk" "gnome"];
+    };
   };
 
   system.stateVersion = "25.11";

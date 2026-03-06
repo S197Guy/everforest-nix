@@ -49,7 +49,6 @@
     
     # Productivity & Media
     discord
-    obs-studio
     mpv
     vlc
     zathura
@@ -82,5 +81,14 @@
   ];
 
   home.file.".npmrc".text = "prefix=${config.home.homeDirectory}/.npm-global";
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins;
+      [ 
+        obs-vaapi
+        obs-vkcapture
+        obs-pipewire-audio-capture
+      ];
+  };
   programs.home-manager.enable = true;
 }
