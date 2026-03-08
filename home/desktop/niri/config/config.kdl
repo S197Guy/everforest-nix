@@ -194,7 +194,7 @@ binds {
         spawn-sh "alacritty --class ranger -e ranger ~/"
     }
     Mod+Shift+E hotkey-overlay-title="File Manager: Nautilus" {
-        spawn "Nautilus"
+        spawn "nautilus"
     }
     // ─── Media Controls ───
     // ─── Brightness Controls ───

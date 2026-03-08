@@ -12,13 +12,18 @@
     niri.url = "github:sodiboo/niri-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    niri,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations."scarr-one" = nixpkgs.lib.nixosSystem {
       inherit system;
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
       modules = [
         # Skip tests for niri to prevent build failure
         {
@@ -32,13 +37,13 @@
         }
 
         ./hosts/scarr-one/configuration.nix
-        
+
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "backup";
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = {inherit inputs;};
           home-manager.users.neonscar = {
             imports = [
               ./home/home.nix

@@ -1,7 +1,0 @@
-workspace "browse" { open-on-output "DP-2"; }
-workspace "social" { open-on-output "DP-2"; }
-workspace "prompt" { open-on-output "DP-1"; }
-workspace "gaming" { open-on-output "DP-1"; }
-workspace "remote" { open-on-output "DP-1"; }
-workspace "virtual" { open-on-output "DP-1"; }
-workspace "stream" { open-on-output "DP-1"; }

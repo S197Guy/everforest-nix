@@ -1,6 +1,7 @@
 {
   inputs,
-  pkgs, config,
+  pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -16,7 +17,7 @@
 
   home = {
     username = "neonscar";
-    sessionPath = [ "$HOME/.npm-global/bin" ];
+    sessionPath = ["$HOME/.npm-global/bin"];
     homeDirectory = "/home/neonscar";
     stateVersion = "25.11";
     sessionVariables = {
@@ -47,7 +48,7 @@
     pavucontrol
     swaylock-effects
     wlogout
-    
+
     # Productivity & Media
     discord
     mpv
@@ -58,12 +59,12 @@
     librewolf
     ranger
     meld
-    
+
     # Gaming Tools
     lutris
     moonlight-qt
     protonplus
-    
+
     # Virtualization/Containers UI
     podman-desktop
     virt-viewer
@@ -85,12 +86,11 @@
   home.file.".npmrc".text = "prefix=${config.home.homeDirectory}/.npm-global";
   programs.obs-studio = {
     enable = true;
-    plugins = with pkgs.obs-studio-plugins;
-      [ 
-        obs-vaapi
-        obs-vkcapture
-        obs-pipewire-audio-capture
-      ];
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-vaapi
+      obs-vkcapture
+      obs-pipewire-audio-capture
+    ];
   };
   programs.home-manager.enable = true;
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
     settings = {
@@ -7,9 +7,9 @@
         position = "top";
         height = 32;
         spacing = 4;
-        modules-left = [ "custom/launcher" "niri/workspaces" "niri/window" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "tray" "pulseaudio" "cpu" "memory" "network" "custom/power" ];
+        modules-left = ["custom/launcher" "niri/workspaces" "niri/window"];
+        modules-center = ["clock"];
+        modules-right = ["tray" "pulseaudio" "cpu" "memory" "network" "custom/power"];
 
         "custom/launcher" = {
           format = " 󱓟 ";

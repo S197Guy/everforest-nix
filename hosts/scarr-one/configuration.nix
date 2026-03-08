@@ -5,14 +5,15 @@
 }: {
   imports = [
     ../../modules/system.nix
-    ./hardware-configuration.nix ./extra-mounts.nix
+    ./hardware-configuration.nix
+    ./extra-mounts.nix
   ];
 
   networking.hostName = "scarr-one";
 
   # Specific system-wide programs
   programs.niri.enable = true;
-  
+
   # Standardize on fuzzel for niri
   environment.systemPackages = with pkgs; [
     fuzzel

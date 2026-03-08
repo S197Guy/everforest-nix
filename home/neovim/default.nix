@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -8,8 +8,15 @@
   xdg.configFile."nvim".source = ./config;
 
   home.packages = with pkgs; [
-    gcc gnumake unzip wget curl nodejs
-    gopls rust-analyzer nil
+    gcc
+    gnumake
+    unzip
+    wget
+    curl
+    nodejs
+    gopls
+    rust-analyzer
+    nil
     alejandra
     kdlfmt
   ];

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   gtk = {
     enable = true;
     theme = {
@@ -18,7 +18,7 @@
       name = "JetBrainsMono Nerd Font";
       size = 11;
     };
-    
+
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
