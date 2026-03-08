@@ -77,6 +77,7 @@
     cargo
     rust-analyzer
     nil # Nix LSP
+    alejandra
     gcc
     gnumake
   ];
