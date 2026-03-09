@@ -3,8 +3,7 @@
     enable = true;
     # Add local npm binaries to path persistently
     interactiveShellInit = ''
-      fish_add_path -g /home/neonscar/.npm-global/bin
-
+      
       # Source custom fish config from the nix store path
       source ${./config/config.fish}
     '';

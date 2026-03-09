@@ -17,7 +17,7 @@
 
   home = {
     username = "neonscar";
-    sessionPath = ["$HOME/.npm-global/bin"];
+    sessionPath = [ "$HOME/.npm-global/bin" "$HOME/.local/bin" "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.go/bin" ];
     homeDirectory = "/home/neonscar";
     stateVersion = "25.11";
     sessionVariables = {
