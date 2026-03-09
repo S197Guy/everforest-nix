@@ -182,7 +182,7 @@ in {
 
   system.stateVersion = "25.11";
   # Ensure libvirt default network is active and autostarts
-  systemd.services.libvirtd-config = {
+  systemd.services.libvirt-net-autostart = {
     description = "Configure libvirt default network";
     after = [ "libvirtd.service" ];
     wantedBy = [ "multi-user.target" ];
