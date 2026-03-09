@@ -101,6 +101,8 @@ in {
 
   # 10. System-wide packages
   environment.systemPackages = with pkgs; [
+    ebtables
+    dnsmasq
     git
     neovim
     curl
@@ -179,4 +181,18 @@ in {
   };
 
   system.stateVersion = "25.11";
+  # Ensure libvirt default network is active and autostarts
+  systemd.services.libvirtd-config = {
+    description = "Configure libvirt default network";
+    after = [ "libvirtd.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      ${pkgs.libvirt}/bin/virsh net-start default || true
+      ${pkgs.libvirt}/bin/virsh net-autostart default || true
+    '';
+  };
 }
