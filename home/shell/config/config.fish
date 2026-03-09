@@ -1,5 +1,5 @@
 # Custom Aliases - Productivity
-alias invoice='InvoiceTUI'
+alias invoicetui='InvoiceTUI'
 alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
