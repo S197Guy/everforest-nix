@@ -46,6 +46,8 @@
     networkmanagerapplet
     blueman
     pavucontrol
+    playerctl
+    brightnessctl
     swaylock-effects
     wlogout
 
