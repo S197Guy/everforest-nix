@@ -2,9 +2,10 @@
   programs.fish = {
     enable = true;
     # Add local npm binaries to path persistently
-    interactiveShellInit = ''
+        interactiveShellInit = ''
+      fish_add_path -g $HOME/.local/bin $HOME/bin $HOME/.cargo/bin $HOME/.go/bin $HOME/.npm-global/bin
       
-      # Source custom fish config from the nix store path
+      # Source custom fish config from the nix store path custom fish config from the nix store path
       source ${./config/config.fish}
     '';
   };
