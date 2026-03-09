@@ -52,6 +52,8 @@
     wlogout
 
     # Productivity & Media
+    libreoffice-fresh
+    vscodium
     discord
     mpv
     vlc
