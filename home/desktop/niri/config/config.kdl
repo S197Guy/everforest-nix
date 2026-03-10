@@ -160,6 +160,7 @@ window-rule {
 }
 window-rule {
     match app-id="(?i)virt-manager"
+    open-maximized true
     open-on-workspace "virtual"
 }
 window-rule {
