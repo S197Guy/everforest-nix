@@ -184,8 +184,8 @@ in {
   # Ensure libvirt default network is active and autostarts
   systemd.services.libvirt-net-autostart = {
     description = "Configure libvirt default network";
-    after = [ "libvirtd.service" ];
-    wantedBy = [ "multi-user.target" ];
+    after = ["libvirtd.service"];
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
