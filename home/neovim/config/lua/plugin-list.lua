@@ -20,4 +20,5 @@ return {
     "kkoomen/vim-doge",
     "captbaritone/better-indent-support-for-php-with-html",
     "folke/which-key.nvim",
+    "lukas-reineke/indent-blankline.nvim",
 }

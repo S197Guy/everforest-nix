@@ -64,3 +64,6 @@ vim.keymap.set("n", "<leader>mm", "<cmd>make<CR>")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- toggle whitespace
+vim.keymap.set("n", "<leader>lw", "<cmd>set list!<CR>", { desc = "Toggle whitespace" })
