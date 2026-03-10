@@ -7,17 +7,7 @@
   # Link the config directory via XDG to prevent Nix store write errors
   xdg.configFile."nvim".source = ./config;
 
-  home.packages = with pkgs; [
-    gcc
-    gnumake
-    unzip
-    wget
-    curl
-    nodejs
-    gopls
-    rust-analyzer
-    nil
-    alejandra
-    kdlfmt
+    home.packages = with pkgs; [
+    unzip # Specifically needed for some neovim plugin manual installs
   ];
 }

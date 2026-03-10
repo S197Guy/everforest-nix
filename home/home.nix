@@ -25,8 +25,8 @@
     };
   };
 
-  home.packages = with pkgs; [
-    # Core tools
+    home.packages = with pkgs; [
+    # Core User tools
     btop
     eza
     ripgrep
@@ -34,14 +34,10 @@
     jq
     kdlfmt
     rsync
-    wget
-    curl
-    wl-clipboard
     grim
     slurp
     swappy
     cliphist
-    nautilus
     fastfetch
     networkmanagerapplet
     blueman

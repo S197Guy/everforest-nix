@@ -100,9 +100,8 @@ in {
   };
 
   # 10. System-wide packages
-  environment.systemPackages = with pkgs; [
-    ebtables
-    dnsmasq
+    environment.systemPackages = with pkgs; [
+    # Core System Utilities
     git
     neovim
     curl
@@ -131,6 +130,12 @@ in {
     vulkan-tools
     zenity
     kdePackages.kdialog
+    ebtables
+    dnsmasq
+    # Base Desktop requirement (needed for Greeter/Minimal session)
+    alacritty
+    nautilus
+    wl-clipboard
   ];
 
   programs.fish.enable = true;

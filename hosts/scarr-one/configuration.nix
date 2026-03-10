@@ -15,13 +15,10 @@
   programs.niri.enable = true;
 
   # Standardize on fuzzel for niri
-  environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
     fuzzel
     waybar
     swww
-    alacritty
-    nautilus
-    wl-clipboard
   ];
 
   system.stateVersion = "25.11";
