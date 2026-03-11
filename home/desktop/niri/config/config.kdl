@@ -120,6 +120,11 @@ window-rule {
     match app-id="(?i)ranger"
     open-maximized true
 }
+
+window-rule {
+    match app-id="(?i)imv"
+    open-maximized true
+}
 window-rule {
     match app-id="(?i)steam"
     open-maximized true
