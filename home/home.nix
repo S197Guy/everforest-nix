@@ -28,6 +28,8 @@
 
     home.packages = with pkgs; [
     # Core User tools
+    imv
+    viu
     btop
     eza
     ripgrep
