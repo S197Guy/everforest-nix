@@ -21,7 +21,6 @@ workspace "stream" {
 }
 spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &"
 spawn-sh-at-startup "swww-daemon"
-spawn-sh-at-startup "swww img ~/Pictures/Wallpapers/wp3.jpg"
 spawn-sh-at-startup "xwayland-satellite"
 spawn-sh-at-startup "waybar"
 layout {
