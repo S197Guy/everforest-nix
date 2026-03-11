@@ -9,7 +9,7 @@
         spacing = 4;
         modules-left = ["custom/launcher" "niri/workspaces" "niri/window"];
         modules-center = ["clock"];
-        modules-right = ["tray" "pulseaudio" "cpu" "memory" "network" "custom/power"];
+        modules-right = ["tray" "pulseaudio" "cpu" "memory" "custom/power"];
 
         "custom/launcher" = {
           format = " 󱓟 ";
