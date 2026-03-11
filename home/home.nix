@@ -11,6 +11,7 @@
     ./terminal/alacritty.nix
     ./style/gtk.nix
     ./style/swappy.nix
+    ./desktop/wlogout.nix
     ./shell/fish.nix
     ./neovim/default.nix
   ];
@@ -45,7 +46,6 @@
     playerctl
     brightnessctl
     swaylock-effects
-    wlogout
 
     # Productivity & Media
     libreoffice-fresh
