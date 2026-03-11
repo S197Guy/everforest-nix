@@ -157,6 +157,21 @@ window-rule {
     match app-id="(?i)org.gnome.Nautilus"
     open-maximized true
 }
+
+window-rule {
+    match app-id="(?i)feh"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)vlc"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="(?i)mpv"
+    open-maximized true
+}
 window-rule {
     match app-id="(?i)virt-manager"
     open-maximized true
