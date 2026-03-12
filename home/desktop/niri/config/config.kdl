@@ -400,6 +400,10 @@ binds {
     Mod+9 {
         focus-workspace 9
     }
+
+    // ─── Direct Monitor Switch (Warp to DP-2 Workspaces) ───
+    Alt+1 { focus-workspace "browse"; }
+    Alt+2 { focus-workspace "social"; }
     Mod+CTRL+1 {
         move-column-to-workspace 1
     }
