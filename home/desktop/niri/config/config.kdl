@@ -267,13 +267,17 @@ binds {
     Mod+Up {
         focus-window-up
     }
-    Mod+K {
+    Mod+Shift+K {
         focus-window-up
     }
+
+    // ─── Vertical Workspace Navigation ───
+    Mod+K { focus-workspace-up; }
+    Mod+J { focus-workspace-down; }
     Mod+Down {
         focus-window-down
     }
-    Mod+J {
+    Mod+Shift+J {
         focus-window-down
     }
     Mod+CTRL+Left {
