@@ -30,5 +30,5 @@
     recursive = true;
   };
 
-  home.packages = with pkgs; [eza fastfetch ripgrep bat fzf starship];
+  home.packages = with pkgs; [eza fastfetch ripgrep bat fzf];
 }
