@@ -3,7 +3,7 @@
     enable = true;
     enableFishIntegration = true;
     settings = {
-      format = """[ ](bg:#2d353b)$username$hostname$directory$git_branch$git_status$character""";
+      format = ''[ ](bg:#2d353b)$username$hostname$directory$git_branch$git_status$character'';
       
       # Everforest Color Palette (Hard)
       # bg: #2d353b
