@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.fish = {
     enable = true;
+    enableStarship = true;
     # Add local npm binaries to path persistently
         interactiveShellInit = ''
       fish_add_path -g $HOME/.local/bin $HOME/bin $HOME/.cargo/bin $HOME/.go/bin $HOME/.npm-global/bin
