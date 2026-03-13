@@ -13,6 +13,7 @@
     ./style/swappy.nix
     ./desktop/wlogout.nix
     ./shell/fish.nix
+    ./shell/starship.nix
     ./neovim/default.nix
   ];
 
