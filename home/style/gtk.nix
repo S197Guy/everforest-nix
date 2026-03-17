@@ -10,8 +10,8 @@
       package = pkgs.everforest-gtk-theme;
     };
     cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.adwaita-icon-theme;
+      name = "Breeze_Snow";
+      package = pkgs.kdePackages.breeze-icons;
       size = 24;
     };
     font = {
@@ -34,10 +34,16 @@
   };
 
   home.pointerCursor = {
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
+    name = "Breeze_Snow";
+    package = pkgs.kdePackages.breeze-icons;
     size = 24;
     gtk.enable = true;
     x11.enable = true;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
+    style.name = "adwaita-dark";
   };
 }
