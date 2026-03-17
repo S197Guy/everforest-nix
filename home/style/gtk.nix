@@ -10,7 +10,7 @@
       package = pkgs.everforest-gtk-theme;
     };
     cursorTheme = {
-      name = "Breeze_Snow";
+      name = "breeze-dark";
       package = pkgs.kdePackages.breeze-icons;
       size = 24;
     };
@@ -28,13 +28,15 @@
   };
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
+        "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      cursor-theme = "breeze-dark";
+      cursor-size = 24;
     };
   };
 
   home.pointerCursor = {
-    name = "Breeze_Snow";
+    name = "breeze-dark";
     package = pkgs.kdePackages.breeze-icons;
     size = 24;
     gtk.enable = true;
@@ -45,5 +47,10 @@
     enable = true;
     platformTheme.name = "gtk";
     style.name = "adwaita-dark";
+  };
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "breeze-dark";
+    XCURSOR_SIZE = "24";
   };
 }
