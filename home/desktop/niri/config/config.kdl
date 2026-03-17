@@ -57,7 +57,7 @@ hotkey-overlay {
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot-%Y-%m-%d %H-%M-%S.png"
 environment {
-    XCURSOR_THEME "breeze-dark"
+    XCURSOR_THEME "Bibata-Original-Classic"
     XCURSOR_SIZE "24"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     QT_QPA_PLATFORM "wayland"

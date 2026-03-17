@@ -10,8 +10,8 @@
       package = pkgs.everforest-gtk-theme;
     };
     cursorTheme = {
-      name = "breeze-dark";
-      package = pkgs.kdePackages.breeze-icons;
+      name = "Bibata-Original-Classic";
+      package = pkgs.bibata-cursors;
       size = 24;
     };
     font = {
@@ -30,14 +30,14 @@
   dconf.settings = {
         "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      cursor-theme = "breeze-dark";
+      cursor-theme = "Bibata-Original-Classic";
       cursor-size = 24;
     };
   };
 
   home.pointerCursor = {
-    name = "breeze-dark";
-    package = pkgs.kdePackages.breeze-icons;
+    name = "Bibata-Original-Classic";
+    package = pkgs.bibata-cursors;
     size = 24;
     gtk.enable = true;
     x11.enable = true;
@@ -50,7 +50,7 @@
   };
 
   home.sessionVariables = {
-    XCURSOR_THEME = "breeze-dark";
+    XCURSOR_THEME = "Bibata-Original-Classic";
     XCURSOR_SIZE = "24";
   };
 }
